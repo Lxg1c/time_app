@@ -1,0 +1,69 @@
+/* TimerDisplay.css */
+
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    font-family: 'Arial', sans-serif;
+}
+
+.timer__item {
+    position: relative;
+    width: 60px;
+    height: 80px;
+    margin: 0 10px;
+    perspective: 1000px;
+    box-shadow: 10px 5px 5px #000000;
+    background: #ffffff;
+}
+
+.timer__item::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: black; /* Цвет линии */
+    transform: translateY(-50%);
+    z-index: 5;
+}
+
+.timer__item-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    background: #ffffff;
+    color: #000000;
+}
+
+.timer__item-inner--animation {
+    animation: flip .3s ease-in-out;
+}
+
+.timer__item-inner--next {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+}
+
+@keyframes flip {
+    0% {
+        transform: rotateX(0deg);
+    }
+    50% {
+        transform: rotateX(-90deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
